@@ -16,15 +16,12 @@ const isNodeChanged = (oldNode, newNode) => {
     return true;
   }
 
-  if (
+  const differentValue =
     oldNode.children.length === 0 &&
     newNode.children.length === 0 &&
-    oldNode.textContent !== newNode.textContent
-  ) {
-    return true;
-  }
+    oldNode.textContent !== newNode.textContent;
 
-  return false;
+  return differentValue;
 };
 
 const applyDiff = (parentNode, oldNode, newNode) => {
