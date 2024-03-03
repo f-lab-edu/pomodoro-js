@@ -5,7 +5,7 @@ const add = (name, component) => {
 };
 
 // 들어온 컴포넌트 함수의 자식 컴포넌트들을 치환한 새로운 함수 리턴
-const renderWrapper = (component) => {
+export const renderWrapper = (component) => {
   return (targetElement, state) => {
     const element = component(targetElement, state);
     const childComponents = element.querySelectorAll("[data-component]");

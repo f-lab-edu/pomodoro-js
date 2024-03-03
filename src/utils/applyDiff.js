@@ -1,4 +1,4 @@
-const isNodeChanged = (oldNode, newNode) => {
+export const isNodeChanged = (oldNode, newNode) => {
   const oldAttributes = oldNode.attributes;
   const newAttributes = newNode.attributes;
   if (oldAttributes.length != newAttributes.length) {
@@ -31,7 +31,7 @@ const applyDiff = (parentNode, oldNode, newNode) => {
   }
 
   if (oldNode && !newNode) {
-    parentNode.removeChild(node);
+    parentNode.removeChild(oldNode);
     return;
   }
 
