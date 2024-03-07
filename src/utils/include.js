@@ -1,17 +1,17 @@
 export const includeHTML = () => {
-  let allElements = document.getElementsByTagName("*");
-  Array.from(allElements).forEach((target) => {
+  const allElements = document.getElementsByTagName("*");
+
+  const promises = Array.from(allElements).map(async (target) => {
     let includePath = target.dataset.includePath;
+
     if (includePath) {
-      fetch(includePath)
-        .then((response) => {
-          return response.text();
-        })
-        .then((html) => {
-          target.outerHTML = html;
-        });
+      const response = await fetch(includePath);
+      const html = await response.text();
+      target.outerHTML = html;
+    } else {
+      return Promise.resolve();
     }
   });
-};
 
-includeHTML();
+  return Promise.all(promises);
+};

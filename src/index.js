@@ -1,10 +1,9 @@
 import Header from "./components/Header.js";
 import registry from "./utils/registry.js";
 import applyDiff from "./utils/applyDiff.js";
+import { includeHTML } from "./utils/include.js";
 
 const state = {};
-
-registry.add("header", Header);
 
 const render = (state) => {
   window.requestAnimationFrame(() => {
@@ -14,4 +13,7 @@ const render = (state) => {
   });
 };
 
-render(state);
+includeHTML().then(() => {
+  registry.add("header", Header);
+  render(state);
+});
