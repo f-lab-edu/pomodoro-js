@@ -2,6 +2,7 @@ import Header from "./components/Header.js";
 import registry from "./utils/registry.js";
 import applyDiff from "./utils/applyDiff.js";
 import { includeHTML } from "./utils/include.js";
+import "./style/style.css";
 
 const state = {};
 

@@ -5,6 +5,7 @@ export default {
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
+    clean: true,
   },
   devServer: {
     hot: true,
@@ -19,4 +20,12 @@ export default {
       filename: "./header.html",
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
