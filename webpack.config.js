@@ -9,6 +9,7 @@ export default {
   },
   devServer: {
     hot: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

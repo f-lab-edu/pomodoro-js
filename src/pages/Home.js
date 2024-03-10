@@ -6,7 +6,7 @@ const Home = () => {
   home.innerHTML = `<a href="/record">record</a>`;
   home.addEventListener("click", (e) => {
     e.preventDefault();
-    router.navigate("/record");
+    router.navigate("/record/123");
   });
   app.appendChild(home);
 };
