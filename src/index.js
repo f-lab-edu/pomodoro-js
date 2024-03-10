@@ -8,8 +8,6 @@ import Home from "./pages/Home.js";
 
 const state = {};
 
-registry.add("header", Header);
-
 const render = (state) => {
   window.requestAnimationFrame(() => {
     const main = document.querySelector("#root");
