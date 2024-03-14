@@ -4,9 +4,9 @@ import Record from "../pages/Record.js";
 const ROUTE_PARAMETER_REGEXP = /:(\w+)/g;
 const URL_FRAGMENT_REGEXP = "([^\\/]+)";
 
-const routerRegistry = [];
+export const routerRegistry = [];
 
-const addRoute = (path, component) => {
+export const addRoute = (path, component) => {
   const params = [];
 
   const parsedPath = path
@@ -23,7 +23,7 @@ const addRoute = (path, component) => {
   });
 };
 
-const route = (path) => {
+export const route = (path) => {
   const route = routerRegistry.find((route) => route.testRegExp.test(path));
   if (route) {
     if (route.params.length === 0) {
