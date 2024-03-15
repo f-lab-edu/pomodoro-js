@@ -49,9 +49,17 @@ const navigate = (path) => {
 };
 
 const init = () => {
-  addRoute("/", Home);
-  addRoute("/record", Record);
-  addRoute("/record/:date", Record);
+  const app = document.getElementById("app");
+
+  addRoute("/", () => {
+    new Home(app);
+  });
+  addRoute("/record", () => {
+    new Record(app);
+  });
+  addRoute("/record/:date", () => {
+    new Record(app);
+  });
 
   const pathName = window.location.pathname;
   route(pathName);
