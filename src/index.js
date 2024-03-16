@@ -5,8 +5,8 @@ import router from "./utils/router.js";
 import Home from "./pages/Home.js";
 
 includeHTML().then(() => {
-  const target = document.querySelector('[data-component="header"]');
-  new Header(target, undefined);
+  const parent = document.querySelector('[data-component="header"]');
+  new Header(parent);
 });
 
 router.init();

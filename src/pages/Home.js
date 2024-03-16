@@ -3,13 +3,22 @@ import router from "../utils/router.js";
 
 class Home extends Component {
   template() {
-    const home = document.createElement("a");
-    home.innerHTML = `<a href="/record">record</a>`;
+    const div = document.createElement("div");
+    const home = document.createElement("button");
+    home.innerText = `home`;
     home.addEventListener("click", (e) => {
-      e.preventDefault();
-      router.navigate("/record");
+      router.navigate("/");
     });
-    return home;
+    const smallDiv = document.createElement("div");
+    const record = document.createElement("button");
+    record.innerText = `record`;
+    record.addEventListener("click", (e) => {
+      router.navigate("/record/123");
+    });
+    smallDiv.appendChild(record);
+    div.appendChild(home);
+    div.appendChild(smallDiv);
+    return div;
   }
 }
 

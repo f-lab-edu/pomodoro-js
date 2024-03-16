@@ -57,8 +57,8 @@ const init = () => {
   addRoute("/record", () => {
     new Record(app);
   });
-  addRoute("/record/:date", () => {
-    new Record(app);
+  addRoute("/record/:date", (params) => {
+    new Record(app, params);
   });
 
   const pathName = window.location.pathname;
