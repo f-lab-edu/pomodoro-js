@@ -5,7 +5,11 @@ export const isNodeChanged = (oldNode, newNode) => {
 
   const oldAttributes = oldNode.attributes;
   const newAttributes = newNode.attributes;
-  if (oldAttributes.length != newAttributes.length) {
+  if (
+    !oldAttributes ||
+    !newAttributes ||
+    oldAttributes.length != newAttributes.length
+  ) {
     return true;
   }
 
