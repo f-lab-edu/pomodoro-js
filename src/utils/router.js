@@ -29,13 +29,7 @@ export const route = (path) => {
     if (route.params.length === 0) {
       route.component();
     } else {
-      const params = {};
-      const matches = path.match(route.testRegExp);
-      matches.shift();
-      matches.forEach((paramValue, index) => {
-        const paramName = route.params[index];
-        params[paramName] = paramValue;
-      });
+      const params = getParamsFromRoute(route, path);
       route.component(params);
     }
   } else {
@@ -44,8 +38,27 @@ export const route = (path) => {
 };
 
 const navigate = (path) => {
-  route(path);
   window.history.pushState(null, null, path);
+  route(path);
+};
+
+const getParams = () => {
+  const pathname = window.location.pathname;
+  const route = routerRegistry.find((route) => route.testRegExp.test(pathname));
+  return getParamsFromRoute(route, pathname);
+};
+
+const getParamsFromRoute = (route, path) => {
+  const params = {};
+  if (route && route.params.length > 0) {
+    const matches = RegExp(route.testRegExp).exec(path);
+    matches.shift();
+    matches.forEach((paramValue, index) => {
+      const paramName = route.params[index];
+      params[paramName] = paramValue;
+    });
+  }
+  return params;
 };
 
 const init = () => {
@@ -68,4 +81,5 @@ const init = () => {
 export default {
   init,
   navigate,
+  getParams,
 };

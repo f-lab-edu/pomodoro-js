@@ -4,7 +4,7 @@ import router from "../utils/router.js";
 class Home extends Component {
   setEvent() {
     document.querySelector(".btn_to_record").addEventListener("click", (e) => {
-      router.navigate("/record");
+      router.navigate("/record/123");
     });
   }
 }
