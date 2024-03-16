@@ -1,4 +1,8 @@
 export const isNodeChanged = (oldNode, newNode) => {
+  if (oldNode.tagName !== newNode.tagName) {
+    return true;
+  }
+
   const oldAttributes = oldNode.attributes;
   const newAttributes = newNode.attributes;
   if (oldAttributes.length != newAttributes.length) {

@@ -4,11 +4,9 @@ export default class Component {
   state;
   parent;
   props;
-  target;
-  constructor(parent, target, props) {
+  constructor(parent, props) {
     this.parent = parent;
     this.props = props;
-    this.target = target;
     this.render();
   }
   mount() {
@@ -16,12 +14,20 @@ export default class Component {
   }
   template() {
     // 렌더링 하고자 하는 DOM 노드를 리턴하는 함수 (인스턴스에서 override)
-    return this.target.cloneNode(true);
+    return this.parent.cloneNode(true);
   }
   render() {
-    this.parent.replaceChildren(this.template());
-    // TODO: applyDiff 적용하기, parent/target 정리하기, path param 구현
-    // applyDiff(this.parent, this.parent, this.template());
+    let child;
+    if (this.parent.childElementCount === 1) {
+      child = this.parent.firstChild;
+    } else if (this.parent.childElementCount >= 2) {
+      const div = document.createElement("div");
+      Array.from(this.parent.childrens).forEach((node) => {
+        div.appendChild(node);
+      });
+      child = div;
+    }
+    applyDiff(this.parent, child, this.template());
     this.mount();
   }
   setState(newState) {
