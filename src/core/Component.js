@@ -1,4 +1,5 @@
 import applyDiff from "../utils/applyDiff.js";
+import compressNode from "../utils/compressNode.js";
 
 export default class Component {
   state;
@@ -13,22 +14,23 @@ export default class Component {
     // 렌더링 후 진행할 내용 ex) 자식 컴포넌트 실행
   }
   template() {
-    // 렌더링 하고자 하는 DOM 노드를 리턴하는 함수 (인스턴스에서 override)
-    return this.parent.cloneNode(true);
+    const name = Object.getPrototypeOf(this).constructor.name.toLowerCase();
+    const template = document.getElementById(name);
+    const newNode = template.content.cloneNode(true);
+    return newNode;
   }
   render() {
-    let child;
-    if (this.parent.childElementCount === 1) {
-      child = this.parent.firstChild;
-    } else if (this.parent.childElementCount >= 2) {
-      const div = document.createElement("div");
-      Array.from(this.parent.childrens).forEach((node) => {
-        div.appendChild(node);
-      });
-      child = div;
-    }
-    applyDiff(this.parent, child, this.template());
+    // prevNode와 newNode는 각 노드 하나여야 하므로(리스트X) 노드리스트를 div 하나로 만들어줌
+    let prevNode = compressNode(this.parent);
+    const template = this.template();
+    let newNode = compressNode(template);
+    applyDiff(this.parent, prevNode, newNode);
+
     this.mount();
+    this.setEvent();
+  }
+  setEvent() {
+    // 인스턴스에서 렌더링 후 세팅할 이벤트 지정
   }
   setState(newState) {
     this.state = newState;

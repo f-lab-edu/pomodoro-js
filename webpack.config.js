@@ -1,3 +1,4 @@
+import CopyPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
@@ -16,9 +17,8 @@ export default {
       template: "./src/index.html",
       filename: "./index.html",
     }),
-    new HtmlWebpackPlugin({
-      template: "./src/templates/header.html",
-      filename: "./header.html",
+    new CopyPlugin({
+      patterns: [{ from: "./src/templates/*" }],
     }),
   ],
   module: {
