@@ -9,7 +9,7 @@ class Record extends Component {
   }
   mount() {
     const pTag = document.querySelector(".date_info");
-    const { date } = router.getParams();
+    const { date } = router.getPathParams();
     const today = new Date();
     if (date) {
       pTag.innerText = date;

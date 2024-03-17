@@ -29,7 +29,7 @@ export const route = (path) => {
     if (route.params.length === 0) {
       route.component();
     } else {
-      const params = getParamsFromRoute(route, path);
+      const params = getPathParamsFromRoute(route, path);
       route.component(params);
     }
   } else {
@@ -42,13 +42,13 @@ const navigate = (path) => {
   route(path);
 };
 
-const getParams = () => {
+const getPathParams = () => {
   const pathname = window.location.pathname;
   const route = routerRegistry.find((route) => route.testRegExp.test(pathname));
-  return getParamsFromRoute(route, pathname);
+  return getPathParamsFromRoute(route, pathname);
 };
 
-const getParamsFromRoute = (route, path) => {
+export const getPathParamsFromRoute = (route, path) => {
   const params = {};
   if (route && route.params.length > 0) {
     const matches = RegExp(route.testRegExp).exec(path);
@@ -81,5 +81,5 @@ const init = () => {
 export default {
   init,
   navigate,
-  getParams,
+  getPathParams,
 };
