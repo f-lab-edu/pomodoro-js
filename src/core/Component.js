@@ -22,8 +22,7 @@ export default class Component {
   render() {
     // prevNode와 newNode는 각 노드 하나여야 하므로(리스트X) 노드리스트를 div 하나로 만들어줌
     let prevNode = compressNode(this.parent);
-    const template = this.template();
-    let newNode = compressNode(template);
+    let newNode = compressNode(this.template());
     applyDiff(this.parent, prevNode, newNode);
 
     this.mount();

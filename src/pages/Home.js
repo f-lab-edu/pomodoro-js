@@ -1,10 +1,13 @@
+import TimerControl from "../components/TimerControl.js";
 import Component from "../core/Component.js";
-import router from "../utils/router.js";
 
 class Home extends Component {
-  setEvent() {
-    document.querySelector(".btn_to_record").addEventListener("click", (e) => {
-      router.navigate("/record/123");
+  mount() {
+    const parent = document.querySelectorAll(
+      '[data-component="timer_control"]'
+    );
+    parent.forEach((node) => {
+      new TimerControl(node);
     });
   }
 }
