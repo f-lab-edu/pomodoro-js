@@ -3,12 +3,12 @@ import router from "../utils/router.js";
 
 class Record extends Component {
   setEvent() {
-    document.querySelector(".btn_to_home").addEventListener("click", (e) => {
+    document.querySelector(".btn-to-home").addEventListener("click", (e) => {
       router.navigate("/");
     });
   }
   mount() {
-    const pTag = document.querySelector(".date_info");
+    const pTag = document.querySelector(".date-info");
     const { date } = router.getPathParams();
     const today = new Date();
     if (date) {

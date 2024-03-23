@@ -18,7 +18,7 @@ export default {
       filename: "./index.html",
     }),
     new CopyPlugin({
-      patterns: [{ from: "./src/templates/*" }],
+      patterns: [{ from: "./src/templates/*" }, { from: "./public/*" }],
     }),
   ],
   module: {

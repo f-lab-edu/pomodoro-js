@@ -1,0 +1,24 @@
+<template id="timerstarter">
+  <div class="timer-starter">
+    <h5 class="timer-starter-title">Time</h5>
+    <div class="timer-starter-group">
+      <input
+        class="timer-starter-input timer-starter-minute-input"
+        name="minute-input"
+        type="number"
+        min="1"
+        max="60"
+      />
+      <span class="timer-starter-input-seperator">:</span>
+      <input
+        class="timer-starter-input"
+        name="second-input"
+        type="number"
+        min="0"
+        max="59"
+        value="00"
+      />
+      <button class="timer-button timer-starter-button">Start</button>
+    </div>
+  </div>
+</template>

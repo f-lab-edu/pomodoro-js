@@ -18,6 +18,12 @@ body {
   align-items: center;
   font-size: 25px;
   letter-spacing: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.home-wrapper {
+  margin: 50px auto;
+  width: 360px;
 }
 
 .timer {
@@ -27,7 +33,7 @@ body {
   color: #454545;
 }
 
-.timer_box {
+.timer-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,15 +42,77 @@ body {
   border-radius: 100%;
   width: 300px;
   height: 300px;
-  margin-top: 30px;
   font-size: 70px;
   letter-spacing: 2px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
-.timer_setter {
+.timer-setter {
+  margin-top: 50px;
+}
+
+.timer-starter {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.timer-starter-title {
+  font-size: 25px;
+  margin: 0 0 15px 10px;
+}
+
+.timer-starter-group {
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+}
+
+.timer-starter-input {
+  font-size: 17px;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px 15px 10px 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.timer-starter-input-seperator {
+  font-size: 18px;
+  padding: 5px;
+}
+
+.timer-button {
+  cursor: pointer;
+  color: whitesmoke;
+  font-size: 22px;
+  border: none;
+  border-radius: 8px;
+  width: 135px;
+  padding-block: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.timer-starter-button {
+  background-color: tomato;
+  margin-left: 15px;
+}
+
+.pause {
+  background-color: #58a399;
+}
+
+.resume {
+  background-color: #f6995c;
+}
+
+.timer-reset-button {
+  background-color: #496989;
+  margin-left: 15px;
+}
+
+.timer-stopper {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
 }

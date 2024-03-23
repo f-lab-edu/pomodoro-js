@@ -8,7 +8,6 @@ export default class Component {
   constructor(parent, props) {
     this.parent = parent;
     this.props = props;
-    this.render();
   }
   mount() {
     // 렌더링 후 진행할 내용 ex) 자식 컴포넌트 실행
