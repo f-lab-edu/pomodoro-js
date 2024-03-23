@@ -63,15 +63,18 @@ export const getPathParamsFromRoute = (route, path) => {
 
 const init = () => {
   const app = document.getElementById("app");
+  const home = new Home(app);
+  const record = new Record(app);
 
   addRoute("/", () => {
-    new Home(app);
+    home.render();
   });
   addRoute("/record", () => {
-    new Record(app);
+    record.render();
   });
   addRoute("/record/:date", (params) => {
-    new Record(app, params);
+    const recordParam = new Record(app, params);
+    recordParam.render();
   });
 
   const pathName = window.location.pathname;
