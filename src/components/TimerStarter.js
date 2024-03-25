@@ -1,4 +1,5 @@
 import Component from "../core/Component.js";
+import { addRecord, store } from "../state/store.js";
 import commonTimer from "../utils/commonTimer.js";
 import countingTimer from "../utils/countingTimer.js";
 
@@ -18,6 +19,15 @@ class TimerStarter extends Component {
     );
     // 시작버튼을 눌렀을 때
     startButtons[this.props.idx].addEventListener("click", () => {
+      // temp
+      store.dispatch(
+        addRecord({
+          date: "20240325",
+          startTime: "22:00:00",
+          endTime: "23:25:00",
+          durationTime: "25:00",
+        })
+      );
       // input의 분, 초 가져오기
       let minute = parseInt(
         document.getElementsByClassName("timer-starter-input")[
