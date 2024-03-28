@@ -1,3 +1,4 @@
+import { TIMER_STATUS } from "../const/const.js";
 import Component from "../core/Component.js";
 import commonTimer from "../utils/commonTimer.js";
 import countingTimer from "../utils/countingTimer.js";
@@ -5,7 +6,7 @@ import countingTimer from "../utils/countingTimer.js";
 class TimerStopper extends Component {
   mount() {
     const pauseButton = document.querySelector(".timer-pause-button");
-    if (this.props.status === "PAUSE") {
+    if (this.props.status === TIMER_STATUS.PAUSE) {
       pauseButton.classList.remove("pause");
       pauseButton.classList.add("resume");
       pauseButton.innerText = "Resume";
@@ -19,8 +20,8 @@ class TimerStopper extends Component {
     // Pause 버튼
     const pauseButton = document.querySelector(".timer-pause-button");
     pauseButton.addEventListener("click", () => {
-      if (this.props.status === "PAUSE") {
-        this.props.setStatus("START");
+      if (this.props.status === TIMER_STATUS.PAUSE) {
+        this.props.setStatus(TIMER_STATUS.START);
         // 타이머 재개
         let minute = parseInt(
           document.querySelector(".timer-minute").innerText
@@ -40,8 +41,8 @@ class TimerStopper extends Component {
         };
         countingTimerWrapper();
         commonTimer.commonTimer = setInterval(countingTimerWrapper, 1000);
-      } else if (this.props.status === "START") {
-        this.props.setStatus("PAUSE");
+      } else if (this.props.status === TIMER_STATUS.START) {
+        this.props.setStatus(TIMER_STATUS.PAUSE);
         clearInterval(commonTimer.commonTimer);
       }
     });
@@ -51,7 +52,7 @@ class TimerStopper extends Component {
       clearInterval(commonTimer.commonTimer);
       commonTimer.commonTimer = null;
       this.props.setTimer(0, 0);
-      this.props.setStatus("FINISH");
+      this.props.setStatus(TIMER_STATUS.FINISH);
     });
   }
 }

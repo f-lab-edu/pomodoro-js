@@ -1,6 +1,7 @@
 import Component from "../core/Component.js";
 import TimerStarter from "../components/TimerStarter.js";
 import TimerStopper from "../components/TimerStopper.js";
+import { TIMER_STATUS } from "../const/const.js";
 
 class TimerControl extends Component {
   mount() {
@@ -22,7 +23,7 @@ class TimerControl extends Component {
     });
 
     switch (this.props.status) {
-      case "FINISH":
+      case TIMER_STATUS.FINISH:
         // 시작 버튼
         starterInfo.forEach((item, idx) => {
           const starterComponent = new TimerStarter(starters[idx], {
@@ -35,8 +36,8 @@ class TimerControl extends Component {
           starterComponent.render();
         });
         break;
-      case "PAUSE":
-      case "START":
+      case TIMER_STATUS.PAUSE:
+      case TIMER_STATUS.START:
         // 중지/리셋 버튼
         stopperComponent.render();
         break;
