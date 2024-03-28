@@ -1,3 +1,4 @@
+import { TIMER_STATUS } from "../const/const.js";
 import Component from "../core/Component.js";
 import { addRecord, store } from "../state/store.js";
 import commonTimer from "../utils/commonTimer.js";
@@ -54,7 +55,7 @@ class TimerStarter extends Component {
         commonTimer.commonTimer = null;
       }
       // 타이머 수행
-      this.props.setStatus("START");
+      this.props.setStatus(TIMER_STATUS.START);
       countingTimerWrapper();
       let intervalTimer = setInterval(countingTimerWrapper, 1000);
       commonTimer.commonTimer = intervalTimer;

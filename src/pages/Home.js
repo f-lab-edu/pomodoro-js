@@ -1,6 +1,7 @@
 import TimerControl from "../components/TimerControl.js";
 import Timer from "../components/Timer.js";
 import Component from "../core/Component.js";
+import { TIMER_STATUS } from "../const/const.js";
 
 class Home extends Component {
   constructor(parent, props) {
@@ -8,7 +9,7 @@ class Home extends Component {
     this.state = {
       minute: 25,
       second: 0,
-      status: "FINISH",
+      status: TIMER_STATUS.FINISH,
     };
   }
   mount() {
