@@ -1,8 +1,6 @@
-const cloneDeep = (x) => {
-  return JSON.parse(JSON.stringify(x));
-};
+import _ from "lodash";
 
-const freeze = (state) => Object.freeze(cloneDeep(state));
+const freeze = (state) => _.cloneDeep(state);
 
 const createStore = (reducer) => {
   let listeners = [];
@@ -10,10 +8,6 @@ const createStore = (reducer) => {
 
   const subscribe = (listener) => {
     listeners.push(listener);
-
-    return () => {
-      listeners = listeners.filter((l) => l !== listener);
-    };
   };
 
   const invokeSubscribers = () => {
