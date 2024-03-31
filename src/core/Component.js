@@ -1,4 +1,3 @@
-import { store } from "../state/store.js";
 import applyDiff from "../utils/applyDiff.js";
 import compressNode from "../utils/compressNode.js";
 
@@ -13,12 +12,6 @@ export default class Component {
   }
   setup() {
     // 컴포넌트 최초 생성시 진행할 내용
-    store.subscribe(() => {
-      console.log(
-        Object.getPrototypeOf(this).constructor.name,
-        store.getState()
-      );
-    });
   }
   mount() {
     // 렌더링 후 진행할 내용 ex) 자식 컴포넌트 실행, 이벤트 등록

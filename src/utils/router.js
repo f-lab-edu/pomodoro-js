@@ -42,6 +42,11 @@ const navigate = (path) => {
   route(path);
 };
 
+const initialRoute = (path) => {
+  const pathName = window.location.pathname;
+  route(pathName);
+};
+
 const getPathParams = () => {
   const pathname = window.location.pathname;
   const route = routerRegistry.find((route) => route.testRegExp.test(pathname));
@@ -77,8 +82,11 @@ const init = () => {
     recordParam.render();
   });
 
-  const pathName = window.location.pathname;
-  route(pathName);
+  window.addEventListener("popstate", () => {
+    initialRoute();
+  });
+
+  initialRoute();
 };
 
 export default {
