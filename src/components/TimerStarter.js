@@ -1,8 +1,8 @@
 import { TIMER_STATUS } from "../const/const.js";
 import Component from "../core/Component.js";
-import { addRecord, store } from "../state/store.js";
 import commonTimer from "../utils/commonTimer.js";
 import countingTimer from "../utils/countingTimer.js";
+import { getTimeStr, padDateTime } from "../utils/getDateTimeStr.js";
 
 class TimerStarter extends Component {
   mount() {
@@ -20,15 +20,6 @@ class TimerStarter extends Component {
     );
     // 시작버튼을 눌렀을 때
     startButtons[this.props.idx].addEventListener("click", () => {
-      // temp
-      store.dispatch(
-        addRecord({
-          date: "20240325",
-          startTime: "22:00:00",
-          endTime: "23:25:00",
-          durationTime: "25:00",
-        })
-      );
       // input의 분, 초 가져오기
       let minute = parseInt(
         document.getElementsByClassName("timer-starter-input")[
@@ -56,6 +47,10 @@ class TimerStarter extends Component {
       }
       // 타이머 수행
       this.props.setStatus(TIMER_STATUS.START);
+      commonTimer.startTime = getTimeStr(new Date(), ":");
+      commonTimer.durationTime = `${padDateTime(minute)}:${padDateTime(
+        second
+      )}`;
       countingTimerWrapper();
       let intervalTimer = setInterval(countingTimerWrapper, 1000);
       commonTimer.commonTimer = intervalTimer;
