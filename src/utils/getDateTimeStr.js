@@ -4,7 +4,7 @@ export const getDateStr = (date, separator) => {
     separator +
     padDateTime(date.getMonth() + 1) +
     separator +
-    date.getDate()
+    padDateTime(date.getDate())
   );
 };
 

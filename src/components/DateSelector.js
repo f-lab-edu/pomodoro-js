@@ -13,13 +13,6 @@ class DateSelector extends Component {
       option.innerText = date;
       selector.appendChild(option);
     });
-
-    const button = document.querySelector(".select-button");
-    button.addEventListener("click", () => {
-      const selectedDate = selector.options[selector.selectedIndex].value;
-      if (selectedDate === "date") return;
-      router.navigate(`/record/${selectedDate}`);
-    });
   }
 
   getDateList(data) {
@@ -28,6 +21,16 @@ class DateSelector extends Component {
       dateSet.add(item.date);
     });
     return Array.from(dateSet);
+  }
+
+  setEvent() {
+    const selector = document.querySelector(".select-list");
+    const button = document.querySelector(".select-button");
+    button.addEventListener("click", () => {
+      const selectedDate = selector.options[selector.selectedIndex].value;
+      if (selectedDate === "date") return;
+      router.navigate(`/record/${selectedDate}`);
+    });
   }
 }
 
