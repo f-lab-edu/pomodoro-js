@@ -6,6 +6,7 @@ import { TIMER_STATUS } from "../const/const.js";
 class Home extends Component {
   constructor(parent, props) {
     super(parent, props);
+    this.name = "home";
     this.state = {
       minute: 25,
       second: 0,

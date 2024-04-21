@@ -4,6 +4,10 @@ import TimerStopper from "../components/TimerStopper.js";
 import { TIMER_STATUS } from "../const/const.js";
 
 class TimerControl extends Component {
+  constructor(parent, props) {
+    super(parent, props);
+    this.name = "timercontrol";
+  }
   mount() {
     const starters = document.querySelectorAll(
       '[data-component="timer-starter"]'

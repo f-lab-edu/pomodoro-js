@@ -4,6 +4,10 @@ import router from "../utils/router.js";
 import DateSelector from "../components/DateSelector.js";
 import { getDateStr } from "../utils/getDateTimeStr.js";
 class Record extends Component {
+  constructor(parent, props) {
+    super(parent, props);
+    this.name = "record";
+  }
   mount() {
     // 타이틀 세팅
     const title = document.querySelector("#record-title");

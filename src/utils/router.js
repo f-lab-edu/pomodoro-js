@@ -24,13 +24,13 @@ export const addRoute = (path, component) => {
 };
 
 export const route = (path) => {
-  const route = routerRegistry.find((route) => route.testRegExp.test(path));
-  if (route) {
-    if (route.params.length === 0) {
-      route.component();
+  const routingInfo = routerRegistry.find((r) => r.testRegExp.test(path));
+  if (routingInfo) {
+    if (routingInfo.params.length === 0) {
+      routingInfo.component();
     } else {
-      const params = getPathParamsFromRoute(route, path);
-      route.component(params);
+      const params = getPathParamsFromRoute(routingInfo, path);
+      routingInfo.component(params);
     }
   } else {
     route("/");

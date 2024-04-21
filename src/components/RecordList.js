@@ -5,6 +5,10 @@ import router from "../utils/router.js";
 import ListItem from "./ListItem.js";
 
 class RecordList extends Component {
+  constructor(parent, props) {
+    super(parent, props);
+    this.name = "recordlist";
+  }
   mount() {
     const data = store.getState().recordData;
     const list = document.querySelector(".list");

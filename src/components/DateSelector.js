@@ -3,6 +3,10 @@ import { store } from "../state/store.js";
 import router from "../utils/router.js";
 
 class DateSelector extends Component {
+  constructor(parent, props) {
+    super(parent, props);
+    this.name = "dateselector";
+  }
   mount() {
     const selector = document.querySelector(".select-list");
     const data = store.getState().recordData;

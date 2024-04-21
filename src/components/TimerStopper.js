@@ -4,6 +4,10 @@ import commonTimer from "../utils/commonTimer.js";
 import countingTimer from "../utils/countingTimer.js";
 
 class TimerStopper extends Component {
+  constructor(parent, props) {
+    super(parent, props);
+    this.name = "timerstopper";
+  }
   mount() {
     const pauseButton = document.querySelector(".timer-pause-button");
     if (this.props.status === TIMER_STATUS.PAUSE) {

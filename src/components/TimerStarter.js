@@ -5,6 +5,10 @@ import countingTimer from "../utils/countingTimer.js";
 import { getTimeStr, padDateTime } from "../utils/getDateTimeStr.js";
 
 class TimerStarter extends Component {
+  constructor(parent, props) {
+    super(parent, props);
+    this.name = "timerstarter";
+  }
   mount() {
     const titles = document.getElementsByClassName("timer-starter-title");
     titles[this.props.idx].innerText = this.props.name;

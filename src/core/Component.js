@@ -5,6 +5,7 @@ export default class Component {
   state;
   parent;
   props;
+  name;
   constructor(parent, props) {
     this.parent = parent;
     this.props = props;
@@ -17,8 +18,7 @@ export default class Component {
     // 렌더링 후 진행할 내용 ex) 자식 컴포넌트 실행, 이벤트 등록
   }
   template() {
-    const name = Object.getPrototypeOf(this).constructor.name.toLowerCase();
-    const template = document.getElementById(name);
+    const template = document.getElementById(this.name);
     const newNode = template.content.cloneNode(true);
     return newNode;
   }
